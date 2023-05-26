@@ -13,7 +13,7 @@ export const useMainPage = () => {
     fetch('https://test.tspb.su/test-task/vehicles')
       .then((res) => res.json())
       .then((res) => setVehicles(res))
-  }, [])
+  }, [activeView])
 
   return { activeView, vehicles, onClickHandler }
 }

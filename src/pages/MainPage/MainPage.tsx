@@ -5,13 +5,17 @@ export const MainPage = () => {
   const { activeView, onClickHandler, vehicles } = useMainPage()
   return (
     <div>
-      <nav>
-        <ul>
+      <nav className='flex justify-center text-slate-400'>
+        <ul className='flex gap-10'>
           <li>
-            <button onClick={(e) => onClickHandler(e)}>cars</button>
+            <button className='uppercase' onClick={(e) => onClickHandler(e)}>
+              cars
+            </button>
           </li>
           <li>
-            <button onClick={(e) => onClickHandler(e)}>map</button>
+            <button className='uppercase' onClick={(e) => onClickHandler(e)}>
+              map
+            </button>
           </li>
         </ul>
       </nav>

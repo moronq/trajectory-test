@@ -14,11 +14,12 @@ export const CarsView: React.FC<CarsViewProps> = ({ vehicles }) => {
 
   return (
     <>
-      {' '}
       <div>
-        <Select activeCoin={activeFilter} setActiveCoin={setActiveFilter} />
+        <div className='flex justify-end px-6 py-4'>
+          <Select activeCoin={activeFilter} setActiveCoin={setActiveFilter} />
+        </div>
 
-        <ul className='grid gap-4 grid-cols-4'>
+        <ul className='grid grid-cols-4 flex-wrap justify-center gap-4'>
           {filtered.map((el) => (
             <Car key={el.id} car={el} onDelete={onDelete} />
           ))}

@@ -28,8 +28,8 @@ export const Select: React.FC<SelectProps> = ({ activeCoin, setActiveCoin }) => 
   }
 
   return (
-    <div ref={filterListRef} className={styles.select_container}>
-      <button className='border' onClick={onClickHandler}>
+    <div ref={filterListRef} className='relative'>
+      <button className='border p-2 rounded-md flex justify-between gap-2' onClick={onClickHandler}>
         <div className={`${styles.select_icon_container} ${active ? styles.active : ''}`} />
         {filters[activeCoin] || '-'}
       </button>
@@ -38,7 +38,7 @@ export const Select: React.FC<SelectProps> = ({ activeCoin, setActiveCoin }) => 
         {filterList &&
           filterList.map((el, index) => (
             <li
-              className={styles.coin_list_item}
+              className='cursor-pointer p-2 hover:text-white hover:bg-slate-500'
               key={index}
               aria-hidden
               onClick={() => onSelectHandler(el)}

@@ -18,7 +18,7 @@ export const Car: React.FC<CarProps> = ({ car, onDelete }) => {
     setIsEditActive(true)
   }
   return (
-    <div ref={carItemRef} className='border p-4 rounded-xl flex justify-between'>
+    <div ref={carItemRef} className='border p-4 rounded-xl flex justify-between w-64'>
       <ul>
         <li>
           <span>Name:</span>
