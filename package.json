@@ -10,8 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "classnames": "^2.3.2",
+    "mapbox-gl": "^2.15.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-mapbox-gl": "^5.1.1",
+    "react-scripts": "^5.0.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
@@ -36,6 +40,7 @@
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "postcss": "^8.4.23",
     "prettier": "^2.8.8",
+    "react-error-overlay": "6.0.9",
     "tailwindcss": "^3.3.2",
     "typescript": "*",
     "vite": "^4.3.2"
