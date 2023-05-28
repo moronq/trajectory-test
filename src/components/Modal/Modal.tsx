@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { EditableField } from '../../common/EditableField/EditableField'
+import { EditableField } from '../../common'
 
 import styles from './Modal.module.css'
 

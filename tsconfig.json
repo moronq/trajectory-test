@@ -19,6 +19,15 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
+  "plugins": [{ "name": "typescript-plugin-css-modules" }],
   "include": ["src/*", "**/*.d.ts"],
+  "baseUrl": "src",
+  "paths": {
+    "common": ["./common"],
+    "common/*": ["common/*"],
+    "components": ["./components"],
+    "components/*": ["components/*"],
+    "utils/*": ["./utils/*"]
+  },
   "references": [{ "path": "./tsconfig.node.json" }]
 }

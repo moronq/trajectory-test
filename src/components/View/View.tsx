@@ -1,11 +1,9 @@
-import { CarsView } from '../CarsView/CarsView'
-import { MapView } from '../MapView/MapView'
+import { CarsView, MapView } from '..'
 
 interface ViewProps {
   activeView: ActiveView
   filtered: Vehicle[]
-  setVehicles: () => void
-  setFiltered: () => void
+  setFiltered: React.Dispatch<React.SetStateAction<Vehicle[]>>
 }
 
 export const View: React.FC<ViewProps> = ({ activeView, filtered, setFiltered }) => (

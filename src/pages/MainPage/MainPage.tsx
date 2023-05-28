@@ -1,4 +1,4 @@
-import { View } from '../../components/View/View'
+import { View } from '../../components'
 
 import { useMainPage } from './hooks/useMainPage'
 

@@ -10,7 +10,6 @@ interface UseCarViewProps {
 }
 
 export const useCarView = ({ setFiltered, filtered }: UseCarViewProps) => {
-  // const [filtered, setFiltered] = useState<Vehicle[]>([])
   const [activeFilter, setActiveFilter] = useState<Filter>('all')
   const [aciveEditCard, setActiveEditCard] = useState<number | null>(null)
 
@@ -43,12 +42,12 @@ export const useCarView = ({ setFiltered, filtered }: UseCarViewProps) => {
     setFiltered(newArr)
   }
   return {
-    onDelete,
-    activeFilter,
-    setActiveFilter,
-    filtered,
-    setFiltered,
     aciveEditCard,
+    activeFilter,
+    filtered,
+    onDelete,
+    setActiveFilter,
+    setFiltered,
     setActiveEditCard
   }
 }

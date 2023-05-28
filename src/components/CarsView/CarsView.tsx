@@ -1,15 +1,15 @@
-import { Select } from '../../common/Select/Select'
-import { Car } from '../Car/Car'
+import { Select } from '../../common'
+import { Car } from '..'
 
 import { useCarView } from './hooks/useCarView'
 
 interface CarsViewProps {
   filtered: Vehicle[]
-  setFiltered: () => void
+  setFiltered: React.Dispatch<React.SetStateAction<Vehicle[]>>
 }
 
 export const CarsView: React.FC<CarsViewProps> = ({ filtered, setFiltered }) => {
-  const { activeFilter, setActiveFilter, onDelete, aciveEditCard, setActiveEditCard } = useCarView({
+  const { activeFilter, aciveEditCard, setActiveFilter, onDelete, setActiveEditCard } = useCarView({
     setFiltered,
     filtered
   })

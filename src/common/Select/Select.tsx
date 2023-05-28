@@ -12,20 +12,10 @@ interface SelectProps {
 export const Select: React.FC<SelectProps> = ({ activeFilter, setActiveFilter }) => {
   const filterListRef = React.useRef<HTMLDivElement>(null)
 
-  const { active, filterList, onClickHandler, onSelectHandler } = useSelect({
+  const { active, filterList, filters, onClickHandler, onSelectHandler } = useSelect({
     setActiveFilter,
     filterListRef
   })
-
-  const filters = {
-    all: 'все авто',
-    fromCheapToExpensive: 'сначала дешевые',
-    fromExpensiveToCheap: 'сначала дорогие',
-    fromOldToYoung: 'сначала старые',
-    fromYoungToOld: 'сначала новые'
-  } as {
-    [key in Filter]: string
-  }
 
   return (
     <div ref={filterListRef} className='relative'>
@@ -44,9 +34,9 @@ export const Select: React.FC<SelectProps> = ({ activeFilter, setActiveFilter })
               className='cursor-pointer p-2 hover:text-white hover:bg-slate-500'
               key={index}
               aria-hidden
-              onClick={() => onSelectHandler(el)}
+              onClick={() => onSelectHandler(el as Filter)}
             >
-              {filters[el]}
+              {filters[el as Filter]}
             </li>
           ))}
       </ul>

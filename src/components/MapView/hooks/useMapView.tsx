@@ -2,7 +2,7 @@ import * as mapboxgl from 'mapbox-gl'
 import React, { useEffect, useRef, useState } from 'react'
 import ReactDOM from 'react-dom/client'
 
-import { Marker } from '../../Marker/Marker'
+import { Marker } from '../..'
 
 interface UseMapView {
   vehicles: Vehicle[]
@@ -13,7 +13,7 @@ export const useMapView = ({ vehicles }: UseMapView) => {
   const [selectedCar, setSelectedCar] = useState<null | Vehicle>(null)
 
   useEffect(() => {
-    const markerClicked = (vehicle) => {
+    const markerClicked = (vehicle: Vehicle) => {
       setSelectedCar(vehicle)
     }
 

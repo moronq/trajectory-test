@@ -1,11 +1,3 @@
 .close {
-  width: 20px;
-  height: 20px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-image: url(../../static/images/discard.svg);
-}
-.close:hover {
-  opacity: 0.5;
+  @apply w-5 h-5 bg-center bg-no-repeat bg-contain bg-[url('../../static/images/discard.svg')] hover:opacity-50;
 }

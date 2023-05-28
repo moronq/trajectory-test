@@ -1,4 +1,4 @@
-import { EditableField } from '../../common/EditableField/EditableField'
+import { EditableField } from '../../common'
 
 import { useCar } from './hooks/useCar'
 
