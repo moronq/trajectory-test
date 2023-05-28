@@ -1,16 +1,13 @@
-import React, { useRef, useState } from 'react'
-
-import { useOnClickOutside } from '../../../utils/hooks/useOnClickOutside'
+import React, { useState } from 'react'
 
 interface UseCarProps {
   car: Vehicle
   setFiltered: React.Dispatch<React.SetStateAction<Vehicle[]>>
   onDelete: (id: number) => void
+  setActiveEditCard: React.Dispatch<React.SetStateAction<number | null>>
 }
 
-export const useCar = ({ car, setFiltered, onDelete }: UseCarProps) => {
-  const [isEditActive, setIsEditActive] = useState(false)
-  const carItemRef = useRef(null)
+export const useCar = ({ car, setFiltered, onDelete, setActiveEditCard }: UseCarProps) => {
   const [value, setValue] = useState({
     name: car.name,
     model: car.model,
@@ -19,18 +16,14 @@ export const useCar = ({ car, setFiltered, onDelete }: UseCarProps) => {
   })
   const onSubmit = () => {
     setFiltered((prev) => prev.map((el) => (el.id !== car.id ? el : { ...el, ...value })))
-    setIsEditActive(false)
+    setActiveEditCard(null)
   }
-
-  useOnClickOutside(carItemRef, () => {
-    onSubmit()
-  })
 
   const onDeleteClick = () => {
     onDelete(car.id)
   }
   const onEditClick = () => {
-    setIsEditActive(true)
+    setActiveEditCard(car.id)
   }
 
   const onChangeHanlder = (key: string, newValue: string) => {
@@ -39,10 +32,19 @@ export const useCar = ({ car, setFiltered, onDelete }: UseCarProps) => {
       [key]: newValue
     })
   }
+
+  const onDiscard = () => {
+    setValue({
+      name: car.name,
+      model: car.model,
+      price: car.price,
+      year: car.year
+    })
+    setActiveEditCard(null)
+  }
   return {
-    carItemRef,
-    isEditActive,
     value,
+    onDiscard,
     onSubmit,
     onDeleteClick,
     onEditClick,

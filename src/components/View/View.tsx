@@ -3,13 +3,14 @@ import { MapView } from '../MapView/MapView'
 
 interface ViewProps {
   activeView: ActiveView
-  vehicles: Vehicle[]
+  filtered: Vehicle[]
   setVehicles: () => void
+  setFiltered: () => void
 }
 
-export const View: React.FC<ViewProps> = ({ activeView, vehicles }) => (
+export const View: React.FC<ViewProps> = ({ activeView, filtered, setFiltered }) => (
   <div>
-    {activeView === 'cars' && <CarsView vehicles={vehicles} />}
-    {activeView === 'map' && <MapView vehicles={vehicles} />}
+    {activeView === 'cars' && <CarsView filtered={filtered} setFiltered={setFiltered} />}
+    {activeView === 'map' && <MapView vehicles={filtered} />}
   </div>
 )

@@ -5,15 +5,15 @@ import { useSelect } from './hooks/useSelect'
 import styles from './Select.module.css'
 
 interface SelectProps {
-  activeCoin: Filter
-  setActiveCoin: React.Dispatch<React.SetStateAction<Filter>>
+  activeFilter: Filter
+  setActiveFilter: React.Dispatch<React.SetStateAction<Filter>>
 }
 
-export const Select: React.FC<SelectProps> = ({ activeCoin, setActiveCoin }) => {
+export const Select: React.FC<SelectProps> = ({ activeFilter, setActiveFilter }) => {
   const filterListRef = React.useRef<HTMLDivElement>(null)
 
   const { active, filterList, onClickHandler, onSelectHandler } = useSelect({
-    setActiveCoin,
+    setActiveFilter,
     filterListRef
   })
 
@@ -29,9 +29,12 @@ export const Select: React.FC<SelectProps> = ({ activeCoin, setActiveCoin }) => 
 
   return (
     <div ref={filterListRef} className='relative'>
-      <button className='border p-2 rounded-md flex justify-between gap-2' onClick={onClickHandler}>
+      <button
+        className='border p-2 rounded-md flex justify-between gap-2 w-52'
+        onClick={onClickHandler}
+      >
         <div className={`${styles.select_icon_container} ${active ? styles.active : ''}`} />
-        {filters[activeCoin] || '-'}
+        {filters[activeFilter] || '-'}
       </button>
 
       <ul className={`${styles.coin_list_container} ${active ? styles.active : ''}`}>

@@ -5,16 +5,14 @@ type Methods = {
 }
 
 interface UseCarViewProps {
-  vehicles: Vehicle[]
+  setFiltered: (arr: Vehicle[]) => void
+  filtered: Vehicle[]
 }
 
-export const useCarView = ({ vehicles }: UseCarViewProps) => {
-  const [filtered, setFiltered] = useState<Vehicle[]>([])
+export const useCarView = ({ setFiltered, filtered }: UseCarViewProps) => {
+  // const [filtered, setFiltered] = useState<Vehicle[]>([])
   const [activeFilter, setActiveFilter] = useState<Filter>('all')
-
-  useEffect(() => {
-    setFiltered(vehicles)
-  }, [vehicles])
+  const [aciveEditCard, setActiveEditCard] = useState<number | null>(null)
 
   const methods: Methods = {
     all: () => setFiltered(filtered),
@@ -44,5 +42,13 @@ export const useCarView = ({ vehicles }: UseCarViewProps) => {
     const newArr = [...filtered].filter((el) => el.id !== id)
     setFiltered(newArr)
   }
-  return { onDelete, activeFilter, setActiveFilter, filtered, setFiltered }
+  return {
+    onDelete,
+    activeFilter,
+    setActiveFilter,
+    filtered,
+    setFiltered,
+    aciveEditCard,
+    setActiveEditCard
+  }
 }

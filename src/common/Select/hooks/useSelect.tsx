@@ -3,11 +3,11 @@ import React, { RefObject } from 'react'
 import { useOnClickOutside } from '../../../utils/hooks/useOnClickOutside'
 
 interface UseSelectProps {
-  setActiveCoin: React.Dispatch<React.SetStateAction<CoinInfo | null>>
+  setActiveFilter: React.Dispatch<React.SetStateAction<CoinInfo | null>>
   filterListRef: RefObject<HTMLDivElement>
 }
 
-export const useSelect = ({ setActiveCoin, filterListRef }: UseSelectProps) => {
+export const useSelect = ({ setActiveFilter, filterListRef }: UseSelectProps) => {
   const [active, setActive] = React.useState(false)
   const filterList: [Filter] = [
     'all',
@@ -20,7 +20,7 @@ export const useSelect = ({ setActiveCoin, filterListRef }: UseSelectProps) => {
   useOnClickOutside(filterListRef, () => setActive(false))
 
   const onSelectHandler = (coin: string) => {
-    setActiveCoin(coin)
+    setActiveFilter(coin)
     setActive(false)
   }
   const onClickHandler = () => setActive(!active)

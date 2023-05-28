@@ -1,10 +1,32 @@
-.edit {
-  background-image: url(../../static/images/);
-  width: 24px;
-  height: 24px;
+.edit,
+.delete,
+.accept,
+.discard {
+  width: 20px;
+  height: 20px;
   background-position: center;
   background-repeat: no-repeat;
+  background-size: contain;
 }
-.edit:hover {
-  background-color: grey;
+
+.edit {
+  background-image: url(../../static/images/edit.png);
+}
+.edit:hover,
+.accept:hover,
+.discard:hover,
+.delete:hover {
+  opacity: 0.5;
+}
+
+.delete {
+  background-image: url(../../static/images/delete.svg);
+}
+
+.accept {
+  background-image: url(../../static/images/accept.svg);
+}
+
+.discard {
+  background-image: url(../../static/images/discard.svg);
 }

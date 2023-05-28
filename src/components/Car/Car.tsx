@@ -8,70 +8,74 @@ interface CarProps {
   car: Vehicle
   onDelete: (id: number) => void
   setFiltered: React.Dispatch<React.SetStateAction<Vehicle[]>>
+  activeEditCard: null | number
+  setActiveEditCard: React.Dispatch<React.SetStateAction<number | null>>
 }
 
-export const Car: React.FC<CarProps> = ({ car, onDelete, setFiltered }) => {
-  const { carItemRef, isEditActive, value, onChangeHanlder, onSubmit, onDeleteClick, onEditClick } =
-    useCar({
-      car,
-      onDelete,
-      setFiltered
-    })
+export const Car: React.FC<CarProps> = ({
+  car,
+  onDelete,
+  setFiltered,
+  activeEditCard,
+  setActiveEditCard
+}) => {
+  const { value, onDiscard, onChangeHanlder, onSubmit, onDeleteClick, onEditClick } = useCar({
+    car,
+    onDelete,
+    setFiltered,
+    setActiveEditCard
+  })
 
   return (
-    <div ref={carItemRef} className='border p-4 rounded-xl flex justify-between w-64'>
-      <ul>
+    <div className='border p-4 rounded-xl flex justify-between w-72'>
+      <ul className='flex flex-col gap-2'>
         <EditableField
           textField='name'
-          isActive={isEditActive}
+          isActive={activeEditCard === car.id}
           textFieldValue={car.name}
           value={value.name}
           onChange={onChangeHanlder}
         />
         <EditableField
           textField='model'
-          isActive={isEditActive}
+          isActive={activeEditCard === car.id}
           textFieldValue={car.model}
           value={value.model}
           onChange={onChangeHanlder}
         />
         <EditableField
           textField='price'
-          isActive={isEditActive}
+          isActive={activeEditCard === car.id}
           textFieldValue={car.price}
           value={value.price}
           onChange={onChangeHanlder}
         />
         <EditableField
           textField='year'
-          isActive={isEditActive}
+          isActive={activeEditCard === car.id}
           textFieldValue={car.year}
           value={value.year}
           onChange={onChangeHanlder}
         />
       </ul>
-      {isEditActive && <button onClick={onSubmit}>submit</button>}
-      {!isEditActive && (
+      {activeEditCard === car.id && (
+        <div className='flex gap-2 self-start flex-col'>
+          <button onClick={onSubmit}>
+            <div className={styles.accept} />
+          </button>
+          <button onClick={onDiscard}>
+            <div className={styles.discard} />
+          </button>
+        </div>
+      )}
+      {activeEditCard !== car.id && (
         <div className='self-start flex gap-2'>
           <button onClick={onEditClick}>
-            {/* <div className={styles.edit} /> */}
-            <svg
-              width='20px'
-              height='20px'
-              viewBox='0 0 24 24'
-              fill='none'
-              xmlns='http://www.w3.org/2000/svg'
-            >
-              <path
-                d='M15 6.5L17.5 9M11 20H20M4 20V17.5L16.75 4.75C17.4404 4.05964 18.5596 4.05964 19.25 4.75V4.75C19.9404 5.44036 19.9404 6.55964 19.25 7.25L6.5 20H4Z'
-                stroke='#000000'
-                strokeWidth='2'
-                strokeLinecap='round'
-                strokeLinejoin='round'
-              />
-            </svg>
+            <div className={styles.edit} />
           </button>
-          <button onClick={onDeleteClick}>del</button>
+          <button onClick={onDeleteClick}>
+            <div className={styles.delete} />
+          </button>
         </div>
       )}
     </div>

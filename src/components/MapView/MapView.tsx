@@ -1,47 +1,22 @@
-import * as mapboxgl from 'mapbox-gl'
-import ReactDOM from 'react-dom/client'
+import { Modal } from '../Modal/Modal'
 
-import { Marker } from '../Marker/Marker'
-
-import React, { useEffect, useRef, useState } from 'react'
+import { useMapView } from './hooks/useMapView'
 
 interface MapViewProps {
   vehicles: Vehicle[]
 }
 
 export const MapView: React.FC<MapViewProps> = ({ vehicles }) => {
-  const mapContainerRef = useRef(null)
-
-  useEffect(() => {
-    const markerClicked = (title) => {
-      window.alert(title)
-    }
-
-    const map = new mapboxgl.Map({
-      container: mapContainerRef.current,
-      style: 'mapbox://styles/mapbox/streets-v11',
-      center: [vehicles[0].longitude, vehicles[0].latitude],
-      zoom: 10
-    })
-
-    vehicles.forEach((feature) => {
-      const ref = React.createRef()
-      ref.current = document.createElement('div')
-      ReactDOM.createRoot(ref.current as HTMLElement).render(
-        <Marker onClick={markerClicked} vehicles={feature} />
-      )
-
-      new mapboxgl.Marker(ref.current).setLngLat([feature.longitude, feature.latitude]).addTo(map)
-    })
-
-    map.addControl(new mapboxgl.NavigationControl(), 'top-right')
-
-    return () => map.remove()
-  })
+  const { mapContainerRef, selectedCar, setSelectedCar } = useMapView({ vehicles })
 
   return (
-    <div>
-      <div ref={mapContainerRef} className='h-screen' />
+    <div className='h-[calc(100vh_-_5rem)] overflow-hidden my-5 relative'>
+      <div ref={mapContainerRef} className='h-full' />
+      {selectedCar && (
+        <div className='absolute top-6 left-6'>
+          <Modal setSelectedCar={setSelectedCar} car={selectedCar} />
+        </div>
+      )}
     </div>
   )
 }

@@ -3,7 +3,7 @@ import { View } from '../../components/View/View'
 import { useMainPage } from './hooks/useMainPage'
 
 export const MainPage = () => {
-  const { activeView, onClickHandler, vehicles } = useMainPage()
+  const { activeView, filtered, onClickHandler, setFiltered } = useMainPage()
 
   return (
     <div>
@@ -32,7 +32,7 @@ export const MainPage = () => {
         </ul>
       </nav>
       <main>
-        <View activeView={activeView} vehicles={vehicles} />
+        <View activeView={activeView} filtered={filtered} setFiltered={setFiltered} />
       </main>
     </div>
   )

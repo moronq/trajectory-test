@@ -1,18 +1,18 @@
 import styles from './Marker.module.css'
 
 interface MarkerProps {
-  onClick: () => void
+  onClick: (vehicle: Vehicle) => void
   children: React.ReactNode
-  vehicles: Vehicle
+  vehicle: Vehicle
 }
 
-export const Marker: React.FC<MarkerProps> = ({ onClick, children, vehicles }) => {
-  const _onClick = () => {
-    onClick(vehicles.model)
+export const Marker: React.FC<MarkerProps> = ({ onClick, children, vehicle }) => {
+  const onClickHandler = () => {
+    onClick(vehicle)
   }
 
   return (
-    <button onClick={_onClick} className={styles.marker}>
+    <button onClick={onClickHandler} className={styles.marker}>
       {children}
     </button>
   )
