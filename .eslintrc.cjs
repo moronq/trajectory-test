@@ -58,6 +58,7 @@ module.exports = {
     'react/no-array-index-key': 0,
     'class-methods-use-this': 0,
     'no-param-reassign': 0,
+    'import/no-extraneous-dependencies': 0,
     'react/react-in-jsx-scope': 0,
     'react/self-closing-comp': ['warn'],
     'import/order': 0,

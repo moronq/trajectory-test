@@ -1,0 +1,10 @@
+.edit {
+  background-image: url(../../static/images/);
+  width: 24px;
+  height: 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.edit:hover {
+  background-color: grey;
+}

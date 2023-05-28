@@ -3,13 +3,10 @@ import ReactDOM from 'react-dom/client'
 
 import { Marker } from '../Marker/Marker'
 
-import { getAverageCoords } from '../../utils/helpers/getAverageCoords'
-
 import React, { useEffect, useRef, useState } from 'react'
 
 interface MapViewProps {
   vehicles: Vehicle[]
-  coords: [number, number]
 }
 
 export const MapView: React.FC<MapViewProps> = ({ vehicles }) => {

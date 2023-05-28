@@ -8,7 +8,7 @@ interface CarsViewProps {
 }
 
 export const CarsView: React.FC<CarsViewProps> = ({ vehicles }) => {
-  const { filtered, activeFilter, setActiveFilter, onDelete } = useCarView({
+  const { filtered, activeFilter, setActiveFilter, onDelete, setFiltered } = useCarView({
     vehicles
   })
 
@@ -21,7 +21,7 @@ export const CarsView: React.FC<CarsViewProps> = ({ vehicles }) => {
 
         <ul className='grid grid-cols-4 flex-wrap justify-center gap-4'>
           {filtered.map((el) => (
-            <Car key={el.id} car={el} onDelete={onDelete} />
+            <Car key={el.id} car={el} onDelete={onDelete} setFiltered={setFiltered} />
           ))}
         </ul>
       </div>

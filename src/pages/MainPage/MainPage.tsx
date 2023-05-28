@@ -1,5 +1,6 @@
-import { useMainPage } from './hooks/useMainPage'
 import { View } from '../../components/View/View'
+
+import { useMainPage } from './hooks/useMainPage'
 
 export const MainPage = () => {
   const { activeView, onClickHandler, vehicles } = useMainPage()

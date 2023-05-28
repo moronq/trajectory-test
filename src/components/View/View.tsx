@@ -4,6 +4,7 @@ import { MapView } from '../MapView/MapView'
 interface ViewProps {
   activeView: ActiveView
   vehicles: Vehicle[]
+  setVehicles: () => void
 }
 
 export const View: React.FC<ViewProps> = ({ activeView, vehicles }) => (

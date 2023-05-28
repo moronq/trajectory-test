@@ -44,5 +44,5 @@ export const useCarView = ({ vehicles }: UseCarViewProps) => {
     const newArr = [...filtered].filter((el) => el.id !== id)
     setFiltered(newArr)
   }
-  return { onDelete, activeFilter, setActiveFilter, filtered }
+  return { onDelete, activeFilter, setActiveFilter, filtered, setFiltered }
 }
